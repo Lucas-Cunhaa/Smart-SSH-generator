@@ -6,7 +6,7 @@ This guide explains how to generate an SSH key (with the ed25519 algorithm), add
 
 ## 1. Generate a New SSH Key
 
-1. To generate a new SSH key pair:
+1.  To generate a new SSH key pair:
 
 ```bash
 ssh-keygen -t ed25519 -C "your_plataform_email@example.com"
@@ -16,27 +16,25 @@ ssh-keygen -t ed25519 -C "your_plataform_email@example.com"
 - b: select the size of the key in bits
 - -C: add a comment for the key, with the propurse of identification
 
-2. Verify with: 
-
-- 2.1
+2.  Verify with: 
 
 ```bash
 cat myKey.pub
 ```
 
-the result should be somethin like:
+the result should be something like:
 
 ```bash
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICv...rest_of_key... user@example.com
 ```
 
-- 2.2
+Then, use:
 
 ```bash
 cat myKey
 ```
 
-the result should be somethin like:
+the result should be something like:
 
 ```bash
 -----BEGIN OPENSSH PRIVATE KEY-----
@@ -49,7 +47,7 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAA...
 
 ## 2. Create, if does not exist, a .ssh repository and move the keys into
 
--1 Check the .ssh folder:
+1.  Check the .ssh folder:
 
 - Linux/Mac OS:
 
@@ -64,10 +62,13 @@ ls -a C:/Users/<your_user>/
 ```
 - If does not exists, create a new one:
 
-```bash mkdir ~/.ssh
+```bash
+mkdir ~/.ssh
 ```
 
-2. Move the private and public key (key.pub) into the folder
+2.  Move the private and public key (key.pub) into the folder
+
+Use this comand to move:
 
 ```bash
 mv myKey myKey.pub ~/.ssh/
@@ -75,21 +76,21 @@ mv myKey myKey.pub ~/.ssh/
 
 ---
 
-## 3. Add the SSH to the agent
+## 3. Add the SSH key to the agent
 
-1. Active your ssh agent:
+1.  Active your ssh agent:
 
 ```bash
 eval "$(ssh-agent -s)"
 ```
 
-2. Add your private key
+2.  Add your private key
 
 ```bash
 ssh-add ~/.ssh/myKey
 ```
 
-3. Go the the plataform that you want to authenticate with ssh, and paste the public into it, copy the key with:
+3.  Go the the plataform that you want to authenticate with ssh, and paste the public into it, copy the key with:
 
 ```bash
 cat ~/.ssh/myKey.pub
@@ -104,14 +105,14 @@ ssh -T git@github.com
 
 ## 5. Create the script for smart connection
 
-1. Entry in your terminal configuration file
+1.  Entry in your terminal configuration file
 example with zsh:
 
 ```bash
  nano ~/.zshrc
 ```
 
-2. Enter the script for generate de agent when initializng the terminal:
+2.  Enter the script for generate de agent when initializng the terminal:
 
 ```bash
 if [ -z "$SSH_AUTH_SOCK" ]; then
