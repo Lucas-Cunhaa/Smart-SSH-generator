@@ -1,4 +1,4 @@
-# Sm# SSH Key Setup and Automation 
+## SSH Key Setup and Automation 
 
 This guide explains how to generate an SSH key (with the ed25519 algorithm), add it to a plataform, GitHub for example, and automatically load it using `ssh-agent` every time you start your computer or open a terminal session .
 
@@ -18,24 +18,28 @@ ssh-keygen -t ed25519 -C "your_plataform_email@example.com"
 
 2. Verify with: 
 
-2.1
+- 2.1
 
-```bash cat myKey.pub
+```bash
+cat myKey.pub
 ```
 
 the result should be somethin like:
 
-```bash ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICv...rest_of_key... user@example.com
+```bash
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICv...rest_of_key... user@example.com
 ```
 
-2.2
+- 2.2
 
-```bash cat myKey
+```bash
+cat myKey
 ```
 
 the result should be somethin like:
 
-bash```-----BEGIN OPENSSH PRIVATE KEY-----
+```bash
+-----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAA...
 ...rest_of_the_key...
 -----END OPENSSH PRIVATE KEY-----
@@ -50,7 +54,7 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAA...
 - Linux/Mac OS:
 
 ```bash
-ls -a ls -a /home/<your_user>/
+ls -a ls -a /home/<your_user>
 ```
 
 - Windows:
@@ -116,10 +120,10 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     ssh-add ~/.ssh/gitHubKey
 fi
 ```
-if [ -z "$SSH_AUTH_SOCK" ]; then -> Verify if the "$SSH_AUTH_SOCK" (environment  that stores ssh-agent path) is empty
+- if [ -z "$SSH_AUTH_SOCK" ]: Verify if the "$SSH_AUTH_SOCK" (environment  that stores ssh-agent path) is empty
 
-eval "$(ssh-agent -s)" -> generate anew SSH agent
+- eval "$(ssh-agent -s)": generate anew SSH agent
 
-ssh-add ~/.ssh/gitHubKey -> Add the private key into te agent
+- ssh-add ~/.ssh/gitHubKey: Add the private key into te agent
 
 
