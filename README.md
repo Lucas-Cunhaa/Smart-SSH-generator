@@ -12,53 +12,63 @@ This guide explains how to generate an SSH key (with the ed25519 algorithm), add
 ssh-keygen -t ed25519 -C "your_plataform_email@example.com"
 ```
 
--t -> select the algorithm for the key
--b -> select the size of the key in bits
--C -> add a comment for the key, with the propurse of identification
+- t: select the algorithm for the key
+- b: select the size of the key in bits
+- -C: add a comment for the key, with the propurse of identification
 
 2. Verify with: 
+
 2.1
+
 ```bash cat myKey.pub
 ```
+
 the result should be somethin like:
+
 ```bash ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICv...rest_of_key... user@example.com
 ```
 
 2.2
-```bash
+
 ```bash cat myKey
 ```
+
 the result should be somethin like:
-```-----BEGIN OPENSSH PRIVATE KEY-----
+
+bash```-----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAA...
 ...rest_of_the_key...
 -----END OPENSSH PRIVATE KEY-----
-
 ```
 
 ---
 
 ## 2. Create, if does not exist, a .ssh repository and move the keys into
+
 -1 Check the .ssh folder:
 
 - Linux/Mac OS:
+
 ```bash
 ls -a ls -a /home/<your_user>/
-
 ```
+
 - Windows:
+
 ```bash
 ls -a C:/Users/<your_user>/
-
 ```
 - If does not exists, create a new one:
+
 ```bash mkdir ~/.ssh
 ```
+
 2. Move the private and public key (key.pub) into the folder
+
 ```bash
 mv myKey myKey.pub ~/.ssh/
-
 ```
+
 ---
 
 ## 3. Add the SSH to the agent
